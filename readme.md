@@ -1,56 +1,48 @@
-# Playwright-testien kehittämiseen ja suorittamiseen tarvittavien työkalujen asennusohjeet
-
-Tämä dokumentti tarjoaa ohjeet Playwright-testien kehittämiseen ja suorittamiseen tarvittavien työkalujen asennukseen. Playwright on tehokas testauskirjasto, joka mahdollistaa monipuolisten ja luotettavien selainpohjaisten testien kirjoittamisen. Se tukee useita selaimia ja tarjoaa laajan valikoiman ominaisuuksia, jotka helpottavat testien kehittämistä ja suorittamista. Seuraavissa osioissa käydään läpi tarvittavien työkalujen asennusvaiheet, jotta voit aloittaa Playwright-testien kirjoittamisen ja ajamisen omassa kehitysympäristössäsi.
-
-Huomaa, että tämä dokumentti ei ole kattava, joten suosittelemme tutustumaan myös Playwrightin virallisiin ohjeisiin ja katsomaan opetusvideoita, jotta saat kaiken irti työkalusta ja sen ominaisuuksista.
+# RPA-haaste: palkkajärjestelmän migraatio
 
 
-## Node.js:n asennus
 
-Node.js on JavaScript-ajoympäristö, joka mahdollistaa JavaScriptin suorittamisen "palvelinpuolella", eli tässä tapauksessa omalla koneellasi. Playwright on rakennettu Node.js:n päälle, joten sen asentaminen on välttämätöntä Playwright-testien kehittämiseksi ja suorittamiseksi. Voit ladata ja asentaa Node.js:n seuraavasta linkistä: [Node.js:n lataussivu (nodejs.org)](https://nodejs.org/).
+> Subject: 🚨 Kriittinen palkkajärjestelmän migraatio - Sinua tarvitaan!
+>
+>
+> Hei!
+>
+> Toivomme, että tämä viesti tavoittaa sinut hyvässä hengessä. Valitettavasti meidän on ilmoitettava, että kielteistä julkisuutta saanut *Rekisterin Optimointi ja Systeemin Kulujen Alitus (ROSKA)* -hankkeemme on kohdannut *pienen* operatiivisen haasteen, joka on vain lievästi katastrofaalinen.
+>
+> Kuten olet ehkä lukenut lehdistä ja kuullut kahvipöytäkeskusteluista, vanha palkkajärjestelmämme *LegacyPalkka* on päättänyt jäädä eläkkeelle *odotettua aiemmin*, jättäen tuhannet kunnalliset työntekijät palkanmaksun välitilaan. Uusi järjestelmä, *Palkanhallinnan Uusi Rekisteri ja Käsittelyjärjestelmä (PURKKA)*, lupaa mullistaa palkanlaskennan huipputason automaatiolla ja tekoälyavusteisella synergia-ajattelulla, mutta siinä on *pieni* ongelma:
+>
+> 👉 **Migraatiotiedosto on 17 843 riviä pitkä, sisältää mahdollisesti korruptoituneita tietoja ja se on ehdottomasti syötettävä uuteen järjestelmään tämän päivän aikana.**
+>
+> Haasteet ovat täysin ennakoimattomia, koska kukaan ei testannut tätä kunnolla. Tässä kohtaa sinä astut kuvaan. Korkeasti arvostettuna **Digitaalisten Prosessien Optimointiasiantuntijana (määräaikainen, palkaton)** sinulle on uskottu **kriittinen tehtävä**: varmistaa, että kaikki palkkatiedot siirtyvät järjestelmään oikein. Manuaalinen syöttö ei ole vaihtoehto, koska tietojen täytyy olla järjestelmässä ennen huomista palkanmaksua.
+>
+> 💡 **Tehtäväsi:**
+> - Automatisoi palkkatietojen syöttö Playwrightilla.
+> - Varmista, että kaikki rivit on oikein siirretty PURKKA-järjestelmään.
+> - Vältä kohtalokasta **"Virhe 402: Työntekijää ei löydy"** -ilmoitusta. Se nollaa tietokannan ja syöttäminen joudutaan aloittamaan alusta.
+> - Onnistuneen suorituksen jälkeen saat **erittäin salaisen onnitteluviestin**, joka todistaa kykysi organisaatiolle.
+>
+> Luotamme sinuun. Työntekijät ansaitsevat palkkansa, ja sinä olet heidän ainoa toivonsa.
+>
+> Terveisin,
+>
+> *Hätätilan Palkanmaksuoperaatioryhmä*
 
 
-## Visual Studio Code (suositeltu)
+> Subject: Liite unohtui
+>
+>
+> Hei taas,
+>
+> Unohdin liitteen edellisestä viestistä. **Liite on nyt mukana.** Tsemppiä tehtävään - me kaikki luotamme sinuun!
+>
+> [📎 palkkatiedot.csv](./palkkatiedot.csv)
+>
+> Terveisin,
+>
+> *Hätätilan Palkanmaksuoperaatioryhmä*
 
-Visual Studio Code on suosittu koodieditori, joka tukee Playwrightin kehitystä. Voit ladata ja asentaa VS Coden seuraavasta linkistä: [Visual Studio Code lataussivu](https://code.visualstudio.com/).
-
-Suosittelemme asentamaan lisäksi [Playwright Test for VS Code -laajennuksen (ms-playwright.playwright)](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright), joka tarjoaa Playwright-testeille tukea Visual Studio Codessa. Voit etsiä ja asentaa laajennuksen suoraan VS Coden extensions-näkymässä.
-
-
-## npm-paketin asennus
-
-Playwrightin asennus voidaan tehdä helposti käyttämällä `npm init playwright@latest` -komentoa. Tämä komento luo uuden Playwright-projektin ja asentaa kaikki tarvittavat riippuvuudet automaattisesti.
-
-```bash
-npm init playwright@latest
-```
-
-Seuraa komentorivillä annettuja ohjeita, jotta voit määrittää projektisi asetukset. Tämä komento luo myös valmiin projektirakenteen, joka sisältää esimerkkitestejä ja konfiguraatiotiedostoja, mikä helpottaa Playwrightin käytön aloittamista. Vaihtoehtoisesti voit käyttää VS Code -laajennuksen ["install playwright"-ominaisuutta](https://marketplace.visualstudio.com/items?itemName=ms-playwright.playwright#install-playwright).
-
-Suosittelemme sinua käyttämään asennuksessa ohjelmointikielenä TypeScriptiä ja lisäämään projektiin automaattisesti GitHub actions -työkulun.
-
-Lisätietoja Playwrightin asennuksesta ja konfiguroinnista löydät Playwrightin dokumentaatiosta: [Playwright Getting Started](https://playwright.dev/docs/intro).
-
-
-## Playwrightin selainajurien asennus
-
-Playwright tukee useita selaimia, kuten Chromium, Firefox ja WebKit. Voit asentaa nämä selaimet käyttämällä seuraavaa komentoa:
-
-```bash
-npx playwright install
-```
-
-Voit myös valita asennettavat selaimet erikseen. Esimerkiksi, jos haluat asentaa vain Chromiumin, voit käyttää seuraavaa komentoa:
-
-```bash
-npx playwright install chromium
-```
-
-Lisätietoja selainten asennuksesta ja konfiguroinnista löydät Playwrightin dokumentaatiosta [https://playwright.dev/docs/browsers](https://playwright.dev/docs/browsers).
-
-Näiden työkalujen asennuksen jälkeen olet valmis kehittämään ja suorittamaan Playwright-testejä.
 
 
 ## Materiaalista
 
-Nämä asennusohjeet on luotu hyödyntämällä kielimalleja ja tekoälytyökaluja, kuten GitHub Copilot ja ChatGPT.
+Tämä tehtävä on luotu hyödyntäen kielimalleja ja tekoälytyökaluja, kuten GitHub Copilot ja ChatGPT.
